@@ -16,13 +16,13 @@ repositories {
 }
 
 dependencies {
-    // Use JUnit Jupiter for testing.
-    testImplementation libs.junit.jupiter
-
-    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-
-    // This dependency is used by the application.
     implementation libs.guava
+    implementation("com.rabbitmq:amqp-client:5.26.0")
+    implementation("ch.qos.logback:logback-classic:1.5.18")
+
+    // Test related dependencies
+    testImplementation libs.junit.jupiter
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 // Apply a specific Java toolchain to ease working on different environments.
