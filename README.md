@@ -1,2 +1,2 @@
-# intro-rabbitmq-java
-Project to test RabbitMQ with Java
+# RabbitMQ intro project
+Project to study RabbitMQ features using Java examples
