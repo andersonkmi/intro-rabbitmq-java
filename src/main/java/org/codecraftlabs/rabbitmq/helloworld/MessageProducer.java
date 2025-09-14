@@ -7,7 +7,7 @@ import com.rabbitmq.client.ConnectionFactory;
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
-public class MessageSender {
+public class MessageProducer {
     public void sendMessage(String message, String queueName) {
         ConnectionFactory factory = new ConnectionFactory();
         factory.setHost("localhost");
