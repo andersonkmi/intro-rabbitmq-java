@@ -18,3 +18,12 @@ This will start a RabbitMQ using the version 4.1.4 with the following configurat
 - username: admin
 - password: admiun
 - virtual host: development
+
+## Examples 
+
+### Package org.codecraftlabs.rabbitmq.helloworld
+Simple examples using a classic queue to produce and consume messages.
+
+- MessageProducer: class responsible for creating a test sample message and publish into the message queue
+- MessageConsumer: consumes messages from the queue and it remains running until manually interrupted.
+- NonBlockingConsumer: consumes a single message and exits. If the queue is empty it also exits.
