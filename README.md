@@ -21,7 +21,7 @@ This will start a RabbitMQ using the version 4.1.4 with the following configurat
 
 ## Examples 
 
-### Package org.codecraftlabs.rabbitmq.helloworld
+### Package *org.codecraftlabs.rabbitmq.helloworld*
 Simple examples using a classic queue to produce and consume messages.
 
 - `org.codecraftlabs.rabbitmq.helloworld.MessageProducer`: class responsible for creating a test sample message and publish into the message queue
