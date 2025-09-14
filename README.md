@@ -1,4 +1,4 @@
-# RabbitMQ intro project
+# RabbitMQ self-learning project
 Project to study RabbitMQ features using Java examples
 
 ## Rabbit MQ setup
