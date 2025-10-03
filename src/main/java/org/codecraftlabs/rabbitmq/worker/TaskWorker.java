@@ -10,13 +10,12 @@ import java.util.concurrent.TimeoutException;
 
 public class TaskWorker {
     public void processWork(String queueName) {
-        try {
-            ConnectionFactory factory = new ConnectionFactory();
-            factory.setHost("localhost");
-            factory.setVirtualHost("development");
-            factory.setUsername("test");
-            factory.setPassword("password");
-            Connection connection = factory.newConnection();
+        ConnectionFactory factory = new ConnectionFactory();
+        factory.setHost("localhost");
+        factory.setVirtualHost("development");
+        factory.setUsername("test");
+        factory.setPassword("password");
+        try (Connection connection = factory.newConnection()) {
             Channel channel = connection.createChannel();
             channel.queueDeclare(queueName, false, false, false, null);
             System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
@@ -32,7 +31,7 @@ public class TaskWorker {
                     channel.basicAck(delivery.getEnvelope().getDeliveryTag(), false);
                 }
             };
-            channel.basicConsume(queueName, false, deliverCallback, consumerTag -> { });
+            channel.basicConsume(queueName, false, deliverCallback, consumerTag -> {});
         } catch (TimeoutException | IOException exception) {
             System.out.println(exception.getMessage());
         }
