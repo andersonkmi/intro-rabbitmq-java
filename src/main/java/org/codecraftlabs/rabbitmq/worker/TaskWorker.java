@@ -4,19 +4,25 @@ import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.client.ConnectionFactory;
 import com.rabbitmq.client.DeliverCallback;
+import org.codecraftlabs.rabbitmq.RabbitMQConnectionFactory;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
 public class TaskWorker {
+    private final RabbitMQConnectionFactory rabbitMQConnectionFactory;
+
+    public TaskWorker(RabbitMQConnectionFactory rabbitMQConnectionFactory) {
+        this.rabbitMQConnectionFactory = rabbitMQConnectionFactory;
+    }
+
     public void processWork(String queueName) {
-        ConnectionFactory factory = new ConnectionFactory();
-        factory.setHost("localhost");
-        factory.setVirtualHost("development");
-        factory.setUsername("test");
-        factory.setPassword("password");
-        try (Connection connection = factory.newConnection()) {
-            Channel channel = connection.createChannel();
+        ConnectionFactory factory = this.rabbitMQConnectionFactory.createConnectionFactory("localhost",
+                "development",
+                "test",
+                "password");
+
+        try (Connection connection = factory.newConnection(); Channel channel = connection.createChannel()) {
             channel.queueDeclare(queueName, false, false, false, null);
             System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
             channel.basicQos(1);
