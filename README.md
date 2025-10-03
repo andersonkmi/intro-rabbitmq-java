@@ -27,3 +27,9 @@ Simple examples using a classic queue to produce and consume messages.
 - `org.codecraftlabs.rabbitmq.helloworld.MessageProducer`: class responsible for creating a test sample message and publish into the message queue
 - `org.codecraftlabs.rabbitmq.helloworld.MessageConsumer`: consumes messages from the queue and it remains running until manually interrupted.
 - `org.codecraftlabs.rabbitmq.helloworld.NonBlockingConsumer`: consumes a single message and exits. If the queue is empty it also exits.
+
+### Package *org.codecraftlabs.rabbitmq.worker*
+Examples using a queue to distribute "time-consuming" tasks among various consumers
+
+- `org.codecraftlabs.rabbitmq.worker.NewTaskProducer`: class responsible for creating and dispatching tasks
+- `org.codecraftlabs.rabbitmq.worker.TaskWorker`: class that will process the time-consuming task produced previously
