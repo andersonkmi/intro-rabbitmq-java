@@ -22,7 +22,8 @@ public class TaskWorker {
                 "test",
                 "password");
 
-        try (Connection connection = factory.newConnection(); Channel channel = connection.createChannel()) {
+        try (Connection connection = factory.newConnection()) {
+            Channel channel = connection.createChannel();
             channel.queueDeclare(queueName, false, false, false, null);
             System.out.println(" [*] Waiting for messages. To exit press CTRL+C");
             channel.basicQos(1);

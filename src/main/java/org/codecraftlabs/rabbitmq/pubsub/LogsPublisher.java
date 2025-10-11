@@ -8,15 +8,15 @@ import org.codecraftlabs.rabbitmq.RabbitMQConnectionFactory;
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
 
-public class LogPublisher {
+public class LogsPublisher {
     private static final String EXCHANGE_NAME = "logs";
     private final RabbitMQConnectionFactory rabbitMQConnectionFactory;
 
-    public LogPublisher(RabbitMQConnectionFactory rabbitMQConnectionFactory) {
+    public LogsPublisher(RabbitMQConnectionFactory rabbitMQConnectionFactory) {
         this.rabbitMQConnectionFactory = rabbitMQConnectionFactory;
     }
 
-    public void publishLog(String logMessage) {
+    public void publishLogs(String logMessage) {
         ConnectionFactory factory = this.rabbitMQConnectionFactory.createConnectionFactory("localhost",
                 "development",
                 "test",
